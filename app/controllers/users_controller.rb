@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  has_many :works
 	
 
 	def new
