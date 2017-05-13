@@ -4,7 +4,17 @@ Rails.application.routes.draw do
 
   resources :pages
   resources :works
-  resources :drafts
+  
+  resources :drafts do 
+    resources :comments
+  end
+
+  resources :comments do
+    resources :comments
+  end
+
+
+
 
 
   #create user

@@ -1,0 +1,26 @@
+
+<% @comments.each do |comment| %>
+	<div class="well">
+		<b> <%=comment.user.name%>: </b>  <%=comment.content %> 
+		<button class="btn btn-xs btn-primary"> Reply to
+	 	Comment </button>
+
+		<% if @current_user.id == comment.user_id %>
+			<%= form_tag "/comments/#{comment.id}", method: :patch do %>
+				<input type="hidden" name="comment_id" value="<%=comment.id%>">	
+				<input type="hidden" name="content" value="comment deleted">
+				<input class="btn btn-xs btn-danger" type="submit" value="delete comment">
+			<%end%>
+		<%end%>
+		<br>
+
+
+
+
+
+		<% comment.comments.each do |reply| %>
+			 <p style="text-indent: 15px;"> <b><%=reply.user.name%>:</b> <%=reply.content%> </p>
+		<%end%>
+	
+	</div>
+<%end%> 

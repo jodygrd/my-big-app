@@ -8,6 +8,7 @@
 		Paste Text Here: <textarea name="text"> </textarea>
 		</div>
 		For Which Project: <%= collection_select(:drafts, :work_id, Work.all, :id, :name, prompt: "Select Work") %> <br>
-		<input type="submit" value="create draft">
+		<input class="btn btn-primary" type="submit" value="create draft">
 	<% end %>
 </div>
+

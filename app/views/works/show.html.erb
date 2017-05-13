@@ -5,3 +5,15 @@
 		<a href="/drafts/<%=draft.id%>"> <%= draft.name %> </a>
 	</div>
 <%end%>
+
+<div>
+	<a class="btn btn-primary" href="/drafts/new"> Add a draft. </a> 
+</div>
+
+<br>
+<br>
+<br>
+
+	<%= button_to "Delete Entire Work", "/works/#{@work.id}", method: :delete, class: "btn btn-xs btn-danger" %>
+
+

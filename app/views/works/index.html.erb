@@ -1,0 +1,11 @@
+<h1> All Your Writing Projects! </h1>
+
+<% @works.each do |work| %>
+
+	<a href="/works/<%=work.id%>"> <%=work.name%> </a>
+	<br>
+	<br>
+
+<%end%>
+
+<%= button_to "Create a New Writing Project!", "/works/new", method: :get, class: "btn btn-primary btn-lg" %>

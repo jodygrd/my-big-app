@@ -5,3 +5,16 @@ Part of: <%= @work.name %>
 <br>
 
 Draft Text: <%= @draft.text %> 
+
+<br>
+<br>
+
+<% if @current_user.id == @work.user_id %>
+	<%= button_to "Delete Draft", "/drafts/#{@draft.id}", method: :delete, :class => "btn btn-sm btn-primary"%>
+<%end %>
+
+<h2>Comments</h2>
+
+<%= render "comments/comments" %>
+<%= render "comments/form" %>
+
