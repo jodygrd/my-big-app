@@ -16,7 +16,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-
+  #workshop
+  get "/groups/:id/workshop" => "groups#workshop"
 
 
 

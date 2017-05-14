@@ -1,6 +1,7 @@
 <h1> All Groups! </h1>
 
 <% @group_members.each do |gm|%>
-	<%= gm.group.name %>
+	<a href="/groups/<%=gm.group_id%>"> <%= gm.group.name %> </a>
 	<br>
 <%end%>
+

@@ -33,6 +33,10 @@ class GroupsController < ApplicationController
 
 	def update
 	end
+
+	def workshop
+		@group = Group.find(params[:id])
+	end
 		
 
 end
