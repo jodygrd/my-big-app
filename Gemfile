@@ -32,9 +32,6 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-#bootstrap
-gem 'bootstrap-sass', '~> 3.3.6'
-
 #seed data
 gem 'faker'
 # Use Capistrano for deployment
