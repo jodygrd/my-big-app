@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   resources :pages
   resources :works
+  resources :categories
+  resources :groups
+  resources :group_members
   
   resources :drafts do 
     resources :comments

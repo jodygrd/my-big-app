@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-  has_many :works
-  has_many :comments
-	
 
 	def new
     render 'new.html.erb'

@@ -1,0 +1,13 @@
+<h1> Create a Writer's Group! </h1>
+
+<div>
+	<%= form_tag "/groups", method: :post do %>
+		Name Your Group: <input type="text" name="name"> <br> 
+		<div>
+		Describe your Group: <textarea name="description"> </textarea>
+		</div>
+		Select a Primary Category: <%= collection_select(:groups, :category_id, Category.all, :id, :name, prompt: "Categories") %> <br>
+		<input class="btn btn-primary" type="submit" value="Create Group!">
+	<% end %>
+</div>
+
