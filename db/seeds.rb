@@ -98,7 +98,6 @@ Comment.create!([
   {content: "Vel atque earum et impedit rerum perspiciatis aut. Repudiandae numquam natus et illum non quidem. Cumque harum sit incidunt.", commentable_type: "Draft", commentable_id: 213, user_id: 8},
   {content: "Molestiae qui provident voluptas modi. Non nesciunt porro. Quo ipsam doloribus blanditiis eaque tempora. Repudiandae voluptas magni officia cum et quia.", commentable_type: "Draft", commentable_id: 129, user_id: 2},
   {content: "Hic corrupti tenetur velit incidunt sed quidem. Neque ut voluptatibus voluptas voluptas. Expedita asperiores possimus fuga. Cumque sit aperiam possimus natus autem velit.", commentable_type: "Draft", commentable_id: 218, user_id: 3},
-  {content: "Autem dolorem qui aut. Sed officia quae rerum quia et. Debitis quia officia quia.", commentable_type: "Comment", commentable_id: 836, user_id: 16},
   {content: "Officiis voluptas perspiciatis sed non. Architecto velit ipsum placeat veniam assumenda. Cupiditate qui voluptatum est quidem debitis. Non in possimus in quis dolorum numquam. Illum deserunt est earum ratione consequatur dolore.", commentable_type: "Draft", commentable_id: 147, user_id: 12},
   {content: "Tempora optio in et. Aliquam quibusdam harum. Sint facere et.", commentable_type: "Draft", commentable_id: 175, user_id: 5},
   {content: "Delectus sint consequatur eos nemo tempora sequi dolor. Qui inventore cum. Dolorem et et dolore omnis. Quod laborum neque quo voluptas. Facilis molestiae consequatur dolore.", commentable_type: "Draft", commentable_id: 37, user_id: 11},
