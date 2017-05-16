@@ -66,3 +66,19 @@
 # end
 
 
+500.times do
+	draft_id = Faker::Number.between(25,1000)
+	user_id = Faker::Number.between(1,16)
+	content = Faker::Lorem.paragraph
+
+
+	Comment.create(
+		commentable_type: "Comment",
+		commentable_id: draft_id,
+		user_id: user_id,
+		content: content)
+
+end
+
+
+

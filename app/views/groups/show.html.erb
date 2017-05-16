@@ -1,15 +1,18 @@
+
+<div class="card card-body card-padding">
+
 <h1><%= @group.name %> </h1>
 
+	<%if @group.users.include?(current_user)%>
+		<a class="btn btn-primary" href="/groups/<%=@group.id%>/workshop"> Enter Workshop </a>
+	<%else%>
+		Welcome to this dope-ass group. Would you like to join?
 
-	Welcome to this dope-ass group. Would you like to join?
-
-	<%= form_tag "/group_members", method: :post do %>
-		<input type="hidden" name="group_id" value="<%=@group.id%>">
-		<input type="submit" value="heck yeah pal">
+		<%= form_tag "/group_members", method: :post do %>
+			<input type="hidden" name="group_id" value="<%=@group.id%>">
+			<input type="submit" value="heck yeah pal">
+		<%end%>
 	<%end%>
 
-<br>
-<br>
-<div>
-	<a class="btn btn-primary" href="/groups/<%=@group.id%>/workshop"> Enter Workshop </a>
+	
 </div>

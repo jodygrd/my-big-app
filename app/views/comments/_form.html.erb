@@ -1,7 +1,7 @@
 <h3> New Comment </h3>
 
 <%= form_tag "/drafts/#{@commentable.id}/comments", method: :post do %>
-  <textarea name="content"> </textarea>
+  <textarea name="content" class="form-control" rows="5" placeholder="Say something helpful!"> </textarea>
 	<br>
-	<input class="btn btn-primary" type="submit" value="submit comment">
+	<input type="submit" value="submit comment">
 <% end %>

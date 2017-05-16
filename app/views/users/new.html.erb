@@ -1,16 +1,19 @@
-<h1>Signup!</h1>
-<%= form_tag '/users', method: :post do  %>
-  <div>
-    Name: <input type="text" name="name">
-  </div>
-  <div>
-    Email: <input type="email" name="email">
-  </div>
-  <div>
-    Password: <input type="password" name="password">
-  </div>
-  <div>
-    Confirm Password: <input type="password" name="password_confirmation">
-  </div>
-  <input type="submit" value="Submit">
-<% end %>
+<div class="card card-body card-padding">
+  <h1>Sign up!</h1>
+  <br>
+  <%= form_tag '/users', method: :post do  %>
+    <div>
+      Name: <input class="form-control" type="text" name="name">
+    </div>
+    <div>
+      Email: <input class="form-control" type="email" name="email">
+    </div>
+    <div>
+      Password: <input class="form-control" type="password" name="password">
+    </div>
+    <div>
+      Confirm Password: <input class="form-control" type="password" name="password_confirmation">
+    </div>
+      <input type="submit" value="Submit" class="btn-primary">
+  <% end %>
+</div>

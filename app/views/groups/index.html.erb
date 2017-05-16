@@ -1,7 +1,12 @@
-<h1> All Groups! </h1>
+<div class="card card-body card-padding text-center">
+	<h1> Your Writing Groups! </h1>
+</div>
 
-<% @group_members.each do |gm|%>
-	<a href="/groups/<%=gm.group_id%>"> <%= gm.group.name %> </a>
-	<br>
+<div id="c-grid" class="clearfix" data-columns>
+<% @groups.each do |group|%>
+	<div class="card card-body card-padding text-center">
+	<a href="/groups/<%=group.id%>"><h3> <%= group.name %> </h3></a>
+	</div>
 <%end%>
+</div>
 

@@ -1,6 +1,15 @@
-<h1><%= @category.name %></h1>
+<div class="card card-body card-padding text-center">
+	<h1><%= @category.name %> Writer's Groups </h1>
+</div>
 
 <% @groups.each do |group|%>
-	<a href="/groups/<%= group.id %>"> <%= group.name %> </a>
-	<br>
+	<div class="card card-body card-padding">
+		<div class="pull-left m-r-10">
+			<h3> <a href="/groups/<%= group.id %>"> <%= group.name %> </a> </h3>
+		</div>
+		<div class="text-right">
+			<h4> <%= group.description %> </h4>
+		</div>
+
+	</div>
 <%end %>

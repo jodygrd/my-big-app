@@ -1,19 +1,22 @@
-<h1> <%= @work.name %> </h1>
+<div class="card card-body card-padding text-center">
+	<h1> Drafts in: <%= @work.name %> </h1>
+</div>
 
-<% @drafts.each do |draft| %>
-	<div>
-		<a href="/drafts/<%=draft.id%>"> <%= draft.name %> </a>
-	</div>
-<%end%>
+<div class="card card-body card-padding">
+	<% @drafts.each do |draft| %>
+		<div>
+			<h3><a href="/drafts/<%=draft.id%>"> <%= draft.name %> </a></h3>
+		</div>
+	<%end%>
+</div>
 
-<div>
-	<a class="btn btn-primary" href="/drafts/new"> Add a draft. </a> 
+	<div class="card card-body palette-Purple-400 bg">
+<a href="/works/new" class="p-25"> <h2 class="text-center palette-White text"> Start a New Writing Project </h2> </a>
+
 </div>
 
 <br>
-<br>
-<br>
 
-	<%= button_to "Delete Entire Work", "/works/#{@work.id}", method: :delete, class: "btn btn-xs btn-danger" %>
+	<%= button_to "Delete Entire Work", "/works/#{@work.id}", method: :delete %>
 
 

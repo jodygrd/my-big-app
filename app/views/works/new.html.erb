@@ -1,11 +1,13 @@
+
+<div class="card card-body card-padding">
 <h1> New Writing Project </h1>
 
-</div>
-	<%= form_tag "/works", method: :post do %> 
-		Title: <input type="text" name="name">
-		<br>
-		Description: <input type="text" name="description">
-		<br>
-		<input type="submit" value="Create new Work!">
-	<% end %>
+		<%= form_tag "/works", method: :post do %> 
+			Title: <input type="text" name="name" class="form-control">
+			<br>
+			Description: <textarea name="description" class="form-control" rows="3" ></textarea> 
+			<br>
+			<input type="submit" value="Create new Work!">
+		<% end %>
+
 </div>

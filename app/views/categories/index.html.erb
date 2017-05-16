@@ -1,6 +1,11 @@
-<h1> Pick a Category! </h1>
+<div class="card card-body card-padding text-center">
+	<h1> Pick a Category! </h1>
+</div>
 
-<% @categories.each do |category| %>
-	<a href="/categories/<%=category.id%>"> <%= category.name %> </a>
-	<br>
-<%end%>
+<div id="c-grid" class="clearfix" data-columns>
+	<% @categories.each do |category| %>
+		<div class="card card-body card-padding text-center">
+			<a href="/categories/<%=category.id%>"><h2> <%= category.name %> </h2></a>
+		</div>
+	<%end%>
+</div>
