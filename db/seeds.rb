@@ -5,7 +5,7 @@ User.create!([
   {name: "ophelia", email: "o@o.com", password: "password", password_confirmation:"password",  photo: "https://i.imgbox.com/Sr6VS2Qq.png", bio: nil, blog_url: nil},
   {name: "carol", email: "c@d.com", password: "password", password_confirmation:"password",  photo: "https://i.imgbox.com/6vMu6ELf.png\n", bio: nil, blog_url: nil},
   {name: "fabien", email: "f@f.com", password: "password", password_confirmation:"password", photo: "https://i.imgbox.com/mu4ewFBV.png\n", bio: nil, blog_url: nil},
-  {name: "hermione", email: "hjg98@hogwarts.edu", password: "password", password_confirmation:, photo: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Hermione_Granger_poster.jpg/220px-Hermione_Granger_poster.jpg", bio: nil, blog_url: nil},
+  {name: "hermione", email: "hjg98@hogwarts.edu", password: "password", password_confirmation: "password", photo: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Hermione_Granger_poster.jpg/220px-Hermione_Granger_poster.jpg", bio: nil, blog_url: nil},
   {name: "kady", email: "k@k.com", password: "password", password_confirmation:"password", photo: "https://i.imgbox.com/cWZ9jog9.png", bio: nil, blog_url: nil},
   {name: "alex", email: "a@b.com", password: "password", password_confirmation:"password", photo: "https://i.imgbox.com/vH33GnLX.png", bio: nil, blog_url: nil},
   {name: "ella", email: "e@e.com", password: "password", password_confirmation:"password", photo: "https://i.imgbox.com/vH33GnLX.png", bio: nil, blog_url: nil},
