@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   resources :groups
   resources :group_members
   
+  namespace :api do
+    namespace :v1 do
+      get "drafts/:id/comments/" => "comments#index"
+    end
+  end
+
   resources :drafts do 
     resources :comments
   end
@@ -16,10 +22,10 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+
+
   #workshop
   get "/groups/:id/workshop" => "groups#workshop"
-
-
 
   #create user
 	get "/signup" => "users#new"
