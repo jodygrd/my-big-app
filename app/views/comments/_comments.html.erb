@@ -1,13 +1,24 @@
+<div id="commentable">
 
-<% @comments.each do |comment| %>
-	<div class="well">
-		<p>
-			<b> <%=comment.user.name%>: </b>  <%=comment.content %> 
-		</p>
+ <div id="draftId" style="display: none;" ><%= @draft.id %></div>
 
-		<% comment.comments.each do |reply| %>
-			 <p class="m-l-25"> <b><%=reply.user.name%>:</b> <%=reply.content%> </p>
-		<%end%>
-		<button class="btn btn-xs btn-primary"> Reply </button>
+	<div v-for="comment in comment_array" class="well p-b-0">
+			<p> <b> {{comment.user_name}}:</b> {{comment.content}} </p>
+			<input v-model="newReply">
+			<button v-on:click="postReply(comment)">reply</button>
+		<div v-for="child in comment.children">
+			<p class="m-l-25"> <b>{{child.user_name}}: </b> {{child.content}} </p>
+		</div>
+	</div> 
+	<br><br>	
+
+	<div>
+		<textarea v-model="newComment" class="form-control" rows="5" placeholder="Say something helpful!"> </textarea>
+		<button class="btn btn-primary" v-on:click="postNewComment()">Submit a Comment</button>
+		<br>
 	</div>
-<%end%> 
+
+
+{{ message }}
+</div>
+

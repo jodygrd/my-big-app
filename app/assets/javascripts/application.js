@@ -11,4 +11,5 @@
 // about supported directives.
 //
 
+//= require vue
 //= require_tree .

@@ -1,5 +1,18 @@
 <h3> New Comment </h3>
 
+
+
+
+<div id="commentable">
+
+	<textarea v-model="newComment" class="form-control" rows="5" placeholder="Say something helpful!"> </textarea>
+	<button class="btn btn-primary" v-on:click="postNewComment()">Submit a Comment</button>
+	<br>
+
+	{{message}}
+
+</div>
+
 <%= form_tag "/drafts/#{@commentable.id}/comments", method: :post do %>
   <textarea name="content" class="form-control" rows="5" placeholder="Say something helpful!"> </textarea>
 	<br>

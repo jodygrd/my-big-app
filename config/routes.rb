@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   
   namespace :api do
     namespace :v1 do
-      get "drafts/:id/comments/" => "comments#index"
+      get "/comments" => "comments#index"
+      get "/drafts/:id/comments" => "comments#show"
+      post "/comments" => "comments#create"
     end
   end
 
