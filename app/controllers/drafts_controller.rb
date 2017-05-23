@@ -20,13 +20,42 @@ class DraftsController < ApplicationController
 
 	def show
 		@draft = Draft.find(params[:id])
-		@work = Work.find(@draft.work_id)
 		@current_user = current_user
 
   	@commentable = @draft
   	@comments = @commentable.comments
   	@comment = Comment.new
 
+  	if @draft.work.user_id == @current_user.id
+  		render 'show.html.erb'
+  	elsif @draft.group.users.include?(current_user)
+  		render 'show.html.erb'
+  	else	
+  		flash[:danger] = "You are not authorized to view that draft!"
+  		redirect_to "/"
+  	end
+	end
+
+	def update
+		@current_user = current_user
+		@draft = Draft.find(params[:id])
+
+		if !(@draft.visible)
+			@draft.group_id = params[:drafts][:group_id]
+			@draft.feedback_request = params[:feedback_request]
+			@draft.visible = true
+		else
+			@draft.visible = false
+		end
+
+		if @draft.save
+			flash[:success] = "Draft sharing updated!"
+			redirect_to "/drafts/#{@draft.id}"
+		else
+			flash[:danger] = "Draft not changed."
+			redirect_to "/drafts/#{@draft.id}"
+		end
+		
 	end
 
 	def destroy

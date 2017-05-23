@@ -1,3 +1,49 @@
-<h1> Welcome to the Workshop </h1>
+<div class="card card-body card-padding">
+	<h1> Writers' Workshop </h1>
+	<h2><%= @group.name %></h2>
+</div>
 
-<h2><%= @group.name %></h2>
+<div class="container c-boxed">
+  <div class="c-header">
+      <h2 class="c-black">Please Leave Constructive Comments on these Drafts.</h2>
+  </div>
+
+  <div class="row pricing-table">
+
+  	<% @group.drafts.each do |draft| %>
+      <div class="col-sm-4">
+          <div class="card pt-item">
+     				<a href="/drafts/<%=draft.id%>">
+              <div class="pti-header bgm-purple">
+                  <h2><%=draft.name%> </h2>
+                  <br>
+                  <h4 class="c-white"><%=draft.work.name%></h4>
+                  <div class="ptih-title">By <%=draft.work.user.name%></div>
+              </div>
+            </a>
+              <div class="pti-body">
+                  <div class="ptib-item">
+                  Author's Request: 
+                      
+                  </div>
+                  <div class="ptib-item">
+                     Preview: <%= truncate("#{draft.text}", length: 150) %>
+                  </div>
+              </div>
+
+              <div class="pti-footer">
+                  <a href="/drafts/<%=draft.id%>" class="bgm-purple"><i class="zmdi zmdi-sign-in"></i></a>
+              </div>
+          </div>
+      </div>
+    <%end%>
+
+  </div>
+
+  <div class="card card-body card-padding">
+
+    <%= render 'chat' %>
+
+  </div>
+
+</div>

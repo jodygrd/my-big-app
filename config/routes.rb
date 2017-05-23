@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :categories
   resources :groups
   resources :group_members
+
+  resources :uploads
   
   namespace :api do
     namespace :v1 do
@@ -24,7 +26,13 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  #search
+  post "/search" => "categories#search"
+  get "/search" => "categories#index"
 
+  #profile
+  
+  get "/profile" => "users#show"
 
   #workshop
   get "/groups/:id/workshop" => "groups#workshop"

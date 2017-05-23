@@ -46,9 +46,6 @@
                         </a>
                     </li>
                     
-                    <li class="hm-alerts" data-user-alert="sua-messages" data-ma-action="sidebar-open" data-ma-target="user-alerts">
-                        <a href=""><i class="hm-icon zmdi zmdi-quote"></i></a>
-                    </li>
                     <li class="dropdown hm-profile">
                         <a data-toggle="dropdown" href="">
                             <img src="<%=current_user.image%>" alt="sup broseph">
@@ -56,13 +53,7 @@
                         
                         <ul class="dropdown-menu pull-right dm-icon">
                             <li>
-                                <a href="profile-about.html"><i class="zmdi zmdi-account"></i> View Profile</a>
-                            </li>
-                            <li>
-                                <a href=""><i class="zmdi zmdi-input-antenna"></i> Privacy Settings</a>
-                            </li>
-                            <li>
-                                <a href=""><i class="zmdi zmdi-settings"></i> Settings</a>
+                                <a href="/profile"><i class="zmdi zmdi-account"></i> View Profile</a>
                             </li>
                             <li>
                                 <a href="/logout"><i class="zmdi zmdi-time-restore"></i> Logout</a>
@@ -70,12 +61,18 @@
                         </ul>
                     </li>
                 </ul>
-                
                 <div class="media-body h-search">
+                <%= form_tag "/search", method: :post do %>
                     <form class="p-relative">
-                        <input type="text" class="hs-input" placeholder="Find a writer's group.">
                         <i class="zmdi zmdi-search hs-reset" data-ma-action="search-clear"></i>
+                        <input type="text" class="hs-input" placeholder="Search Writing Groups." name="search_term">
                     </form>
+                <%end%>
+                </div>
+            
+            <%else%>
+                <div class="pull-right">
+                    <a href="/login" class='btn btn palette-Purple bg btn-lg'> Login or Signup! </a>
                 </div>
             <%end%>
             
@@ -83,66 +80,6 @@
 
         <section id="main">
             <%if current_user %>
-                <aside id="s-user-alerts" class="sidebar">
-                    <ul class="tab-nav tn-justified tn-icon m-t-10" data-tab-color="teal">
-                        <li><a class="sua-messages" href="#sua-messages" data-toggle="tab"><i class="zmdi zmdi-email"></i></a></li>
-                        <li><a class="sua-notifications" href="#sua-notifications" data-toggle="tab"><i class="zmdi zmdi-notifications"></i></a></li>
-                        <li><a class="sua-tasks" href="#sua-tasks" data-toggle="tab"><i class="zmdi zmdi-view-list-alt"></i></a></li>
-                    </ul>
-
-                    <div class="tab-content">
-                        <div class="tab-pane fade" id="sua-messages">
-                            <ul class="sua-menu list-inline list-unstyled palette-Light-Blue bg">
-                                <li><a href=""><i class="zmdi zmdi-check-all"></i> Chat </a></li>
-                                <li><a href=""><i class="zmdi zmdi-long-arrow-tab"></i> About Your </a></li>
-                                <li><a href="" data-ma-action="sidebar-close"><i class="zmdi zmdi-close"></i> Story </a></li>
-                            </ul>
-
-                            <div class="list-group lg-alt c-overflow">
-                                <a href="" class="list-group-item media">
-                                    <div class="lgi-heading">CoolUser845</div>
-                                    <small class="lgi-text">Omg your story rocks my socks! </small>
-                                </a>
-
-                                <a href="" class="list-group-item media">
-                                    <div class="media-body">
-                                        <div class="lgi-heading">LameUser6</div>
-                                        <small class="lgi-text">You're going to need some major re-writes. Sorry! </small>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <a href="" class="btn btn-float btn-danger m-btn">
-                                <i class="zmdi zmdi-plus"></i>
-                            </a>
-                        </div>
-
-                        <div class="tab-pane fade" id="sua-tasks">
-                            <ul class="sua-menu list-inline list-unstyled palette-Green-400 bg">
-                                <li><a href=""><i class="zmdi zmdi-time"></i> something else </a></li>
-                                <li><a href=""><i class="zmdi zmdi-check-all"></i> will be </a></li>
-                                <li><a href="" data-ma-action="sidebar-close"><i class="zmdi zmdi-close"></i> here </a></li>
-                            </ul>
-
-                            <div class="list-group lg-alt c-overflow">
-                                <div class="list-group-item">
-                                    <div class="lgi-heading m-b-5">Word-Count Progress</div>
-
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
-                                            <span class="sr-only">95% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <a href="" class="btn btn-float btn-danger m-btn">
-                                <i class="zmdi zmdi-plus"></i>
-                            </a>
-                        </div>
-                    </div>
-                </aside>
-
                 <aside id="s-main-menu" class="sidebar">
                     <div class="smm-header">
                         <i class="zmdi zmdi-long-arrow-left" data-ma-action="sidebar-close"></i>
@@ -161,10 +98,7 @@
                     </ul>
 
                     <ul class="main-menu">
-                        <li class="active">
-                            <a href="/"><i class="zmdi zmdi-home"></i> Home</a>
-                        </li>
-                        <li><a href="/categories"><i class="zmdi zmdi-globe"></i> Browse Groups</a></li>
+                        <li class="active"><a href="/categories"><i class="zmdi zmdi-globe"></i> Browse Groups</a></li>
                         <li><a href="/groups"><i class="zmdi zmdi-accounts-outline"></i>My Groups</a></li>
                         <li><a href="/works"><i class="zmdi zmdi-local-library"></i> My Works</a></li>
                         <li><a href="#"><i class="zmdi zmdi-calendar"></i> Calendar</a></li>
@@ -191,6 +125,7 @@
                     </ul>
                 </aside>
             <%end%>
+
             <section id="content">
                 <div class="container">
                   <% flash.each do |type,message| %>
@@ -205,15 +140,8 @@
             </section>
 
             <footer id="footer">
-                Copyright &copy; 2015 Material Admin
-
-                <ul class="f-menu">
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Dashboard</a></li>
-                    <li><a href="">Reports</a></li>
-                    <li><a href="">Support</a></li>
-                    <li><a href="">Contact</a></li>
-                </ul>
+                writ app by Jody Lipkin - 2017 <br>
+                Design Copyright &copy; 2015 Material Admin
             </footer>
 
         </section>

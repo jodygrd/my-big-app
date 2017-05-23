@@ -15,7 +15,7 @@ class GroupMembersController < ApplicationController
 		
 		if member.save
 			flash[:success] = "Welcome to this sweet group bra."
-			redirect_to "/groups"
+			redirect_to "/groups/#{member.group_id}"
 		else
 			flash[:danger] = "Sorry bra."
 			redirect_to "/groups/"

@@ -1,0 +1,23 @@
+<div id="commentable">
+</div>
+<div id="chatable">
+
+ 	<div id="groupId" style="display: none;" ><%= @group.id %></div>
+ 	<div id="userId" style="display: none;" ><%= @user_id %></div>
+
+	<div v-for="chat in chat_array">
+		<p> <b> {{chat.user_id}}:</b> {{chat.content}} </p>
+
+	</div> 
+
+	<br>
+	<br>	
+
+	<div>
+		<textarea v-model="newChat" class="form-control" rows="2" placeholder="Say hey!!"> </textarea>
+		<button class="btn btn-primary" v-on:click="postNewChat()">Send Chat</button>
+		<br>
+	</div>
+
+
+</div>

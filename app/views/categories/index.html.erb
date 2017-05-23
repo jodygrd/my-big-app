@@ -1,20 +1,23 @@
 <div class="card card-body card-padding text-center">
-	<h1> Pick a Category! </h1>
+	<h1> Pick a Genre! </h1>
+	<h4> Find writing groups in any category.</h4>
 </div>
 
 <div id="c-grid" class="clearfix" data-columns>
 	<% @categories.each do |category| %>
-	<div class="card"><a href="/categories/<%=category.id%>">
-		<% if category.image %>
-			<div class="card-header ch-img" style="background-image: url(<%=category.image%>); height: 200px">
-			</div>
-		<%else%> 
-			<div class="card-header ch-img" style="background-image: url(https://i.imgbox.com/62txEjXr.jpg); height: 200px">
-			</div>
+		<%if category.id != 30 %>
+			<div class="card"><a href="/categories/<%=category.id%>">
+				<% if category.image %>
+					<div class="card-header ch-img" style="background-image: url(<%=category.image%>); height: 200px">
+					</div>
+				<%else%> 
+					<div class="card-header ch-img" style="background-image: url(https://i.imgbox.com/62txEjXr.jpg); height: 200px">
+					</div>
+				<%end%>
+				<div class="card-header text-center">
+					<h1> <%= category.name %> </h1>
+				</div>
+			</a></div>
 		<%end%>
-		<div class="card-header text-center">
-			<h1> <%= category.name %> </h1>
-		</div>
-	</a></div>
 	<%end%>
 </div>

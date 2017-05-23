@@ -7,10 +7,6 @@ class Api::V1::CommentsController < ApplicationController
 
 	def show
 		@comments = Comment.where(commentable_type: "Draft", commentable_id: params[:id])
-		puts "LOOK HERE LOOK HERE LOOK HERE LOOK HERE LOOK HERE LOOK HERE LOOK HERE "
-		puts @comments
-		puts params[:id]
-		puts "LOOK HERE LOOK HERE LOOK HERE LOOK HERE LOOK HERE LOOK HERE LOOK HERE "
 	end
 
 	def one

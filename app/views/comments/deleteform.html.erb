@@ -1,4 +1,4 @@
-<% if @current_user.id == comment.user_id %>
+	<% if @current_user.id == comment.user_id %>
 			<%= form_tag "/comments/#{comment.id}", method: :patch do %>
 				<input type="hidden" name="comment_id" value="<%=comment.id%>">	
 				<input type="hidden" name="content" value="comment deleted">

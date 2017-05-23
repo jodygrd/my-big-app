@@ -1,24 +1,44 @@
 <div class="card card-body card-padding">
 	<h1> <%= @draft.name %> </h1>
-	Part of: <%= @work.name %>
+	Part of: <%=@draft.work.name%> 
+	By: <%=@draft.work.user.name%> 
+	<% if @draft.visible %> 
+	<br>
+	Up for Feedback in: <a href="/groups/<%=@draft.group.id%>">  <%= @draft.group.name %> </a>
+	<%end%>
 </div>
 
-
-<div id="c-grid" class="clearfix" data-columns>
-
-	<div class="card card-body card-padding">
-		<%= @draft.text %> 
-	</div>
-
-
+<% if (@current_user.id == @draft.work.user_id) %>
 
 	<div class="card card-body card-padding">
-		<h2>Comments</h2>
-
-		<%= render "comments/comments" %>
+		<%= form_tag "/drafts/#{@draft.id}", method: :patch do%>
+			<h3> Submit to Group? </h3>
+			<%= collection_select(:drafts, :group_id, @current_user.groups, :id, :name, prompt: "Select Group") %> <br>
+			<textarea class="form-control" rows="3" placeholder="Are there any areas you'd like specific feedback on?" name="feedback_request"> </textarea>
+			<input type="submit" value="Get some Feedback!!">
+		<%end%> 
 	</div>
-</div>
 
-	<% if @current_user.id == @work.user_id %>
-		<%= button_to "Delete Draft", "/drafts/#{@draft.id}", method: :delete, :class => "btn btn-sm btn-primary"%>
-	<%end %>
+<%end%> 
+
+	<div id="c-grid" class="clearfix" data-columns>
+
+		<div class="card card-body card-padding">
+			<%= simple_format @draft.text %> 
+		</div>
+
+		<div class="card card-body card-padding">
+			<h2>Comments</h2>
+
+			<%= render "comments/comments" %>
+		</div>
+	</div>
+
+		
+		<% if (@current_user.id == @draft.work.user_id) && (@draft.visible) %>
+			<%= button_to "Remove from Group", "/drafts/#{@draft.id}", method: :delete%>
+		<% end %>
+		<br> 
+		<% if @current_user.id == @draft.work.user_id %>
+			<%= button_to "Delete Draft", "/drafts/#{@draft.id}", method: :delete%>
+		<%end %>

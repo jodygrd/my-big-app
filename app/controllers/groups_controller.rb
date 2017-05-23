@@ -18,24 +18,25 @@ class GroupsController < ApplicationController
 			)
 		if @group.save
 			flash[:success] = "group Created! Let's invite some members."
-			redirect_to "/groups/"
+			redirect_to "/groups/#{@group.id}"
 		else
-			flash[:danger] = "group not saved."
+			flash[:danger] = "group not saved. Make a new one?"
 			redirect_to "/groups/new"
 		end
 	end
 
 	def show
 		@group = Group.find(params[:id])
+
 	end
-	
 
 	def update
 	end
 
 	def workshop
 		@group = Group.find(params[:id])
+		@user_id = current_user.id
 	end
-		
+
 
 end

@@ -1,16 +1,22 @@
 <div id="commentable">
 
- <div id="draftId" style="display: none;" ><%= @draft.id %></div>
+ 	<div id="draftId" style="display: none;" ><%= @draft.id %></div>
 
-	<div v-for="comment in comment_array" class="well p-b-0">
-			<p> <b> {{comment.user_name}}:</b> {{comment.content}} </p>
-			<input v-model="newReply">
-			<button v-on:click="postReply(comment)">reply</button>
+	<div v-for="comment in comment_array" class="well">
+		<p> <b> {{comment.user_name}}:</b> {{comment.content}} </p>
 		<div v-for="child in comment.children">
 			<p class="m-l-25"> <b>{{child.user_name}}: </b> {{child.content}} </p>
 		</div>
+		<div v-if="comment.replyVisible">
+			<textarea v-model="newReply" class="form-control" rows="2" placeholder="Respond with something helpful!"> </textarea>
+			<button class="btn btn-primary" v-on:click="postReply(comment)">Post Reply</button>
+		</div>
+		<button v-else class="btn btn-primary" v-on:click="toggleShowReply(comment)">Add Reply</button>
+
 	</div> 
-	<br><br>	
+
+	<br>
+	<br>	
 
 	<div>
 		<textarea v-model="newComment" class="form-control" rows="5" placeholder="Say something helpful!"> </textarea>
@@ -19,6 +25,5 @@
 	</div>
 
 
-{{ message }}
 </div>
 
