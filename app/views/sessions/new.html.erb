@@ -1,5 +1,6 @@
 <div class="card card-body card-padding">
-	<h1>Login</h1>
+	<h1>Welcome Back to Writ</h1>
+	<h3>Login</h3>
 		<%= form_tag "/login", method: :post do %>
 		  <div>
 		    Email: <input class="form-control" type="email" name="email">
@@ -8,8 +9,8 @@
 		    Password: <input class="form-control" type="password" name="password">
 		  </div>
 		  <br>
-		  <input type="submit" value="Log In" class="btn-primary">
+		  <input type="submit" value="Log In" class="btn-primary"> or <a class="btn palette-Grey bg" href="/signup" > Sign Up </a>
 		<% end %>
-		<br>
-	<a class="btn btn-primary" href="/signup" > Sign Up </a>
+
+	
 </div>

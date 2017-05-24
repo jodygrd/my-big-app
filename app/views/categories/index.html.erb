@@ -5,7 +5,7 @@
 
 <div id="c-grid" class="clearfix" data-columns>
 	<% @categories.each do |category| %>
-		<%if category.id != 30 %>
+		<%if category.name != "Search Results" %>
 			<div class="card"><a href="/categories/<%=category.id%>">
 				<% if category.image %>
 					<div class="card-header ch-img" style="background-image: url(<%=category.image%>); height: 200px">

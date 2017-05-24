@@ -2,7 +2,12 @@ class GroupsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@groups = current_user.groups
+		if current_user
+			@groups = current_user.groups
+			render 'index.html.erb'
+		else
+			redirect_to '/signup'
+		end
 
 	end
 
@@ -14,13 +19,14 @@ class GroupsController < ApplicationController
 			description: params[:description],
 			category_id: params[:groups][:category_id],
 			admin_id: current_user.id,
+			level: params[:level],
 			open: true
 			)
 		if @group.save
-			flash[:success] = "group Created! Let's invite some members."
+			flash[:success] = "Group Created!"
 			redirect_to "/groups/#{@group.id}"
 		else
-			flash[:danger] = "group not saved. Make a new one?"
+			flash[:danger] = "group not saved. Try again?"
 			redirect_to "/groups/new"
 		end
 	end

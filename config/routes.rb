@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   resources :categories
   resources :groups
   resources :group_members
-
-  resources :uploads
   
   namespace :api do
     namespace :v1 do
@@ -32,7 +30,8 @@ Rails.application.routes.draw do
 
   #profile
   
-  get "/profile" => "users#show"
+  get "/profile" => "users#profile"
+  get "/users/:id" => "users#show"
 
   #workshop
   get "/groups/:id/workshop" => "groups#workshop"
@@ -40,6 +39,7 @@ Rails.application.routes.draw do
   #create user
 	get "/signup" => "users#new"
   post "/users" => "users#create"
+  patch "/users/:id" => "users#update"
 
   #create sessions
   get "/login" => "sessions#new"

@@ -5,11 +5,16 @@
 
 <div class="container c-boxed">
   <div class="c-header">
-      <h2 class="c-black">Please Leave Constructive Comments on these Drafts.</h2>
+      <%if @group.drafts.count == 0 %>
+
+       <h2 class="c-black">There are no drafts in this group yet! <a href="/works"> You should submit one. </a> Don't be shy. </h2>
+      
+      <%else%>
+        <h2 class="c-black">Please Leave Constructive Comments on these Drafts.</h2>
+      <%end%>
   </div>
 
   <div class="row pricing-table">
-
   	<% @group.drafts.each do |draft| %>
       <div class="col-sm-4">
           <div class="card pt-item">

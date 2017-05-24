@@ -1,6 +1,6 @@
 <div class="card card-body card-padding">
 	<h1> <%= @draft.name %> </h1>
-	Part of: <%=@draft.work.name%> 
+	Part of: <%=@draft.work.name%> <br>
 	By: <%=@draft.work.user.name%> 
 	<% if @draft.visible %> 
 	<br>
@@ -8,14 +8,15 @@
 	<%end%>
 </div>
 
-<% if (@current_user.id == @draft.work.user_id) %>
+<% if (@current_user.id == @draft.work.user_id) && !(@draft.visible) %>
 
 	<div class="card card-body card-padding">
 		<%= form_tag "/drafts/#{@draft.id}", method: :patch do%>
 			<h3> Submit to Group? </h3>
-			<%= collection_select(:drafts, :group_id, @current_user.groups, :id, :name, prompt: "Select Group") %> <br>
-			<textarea class="form-control" rows="3" placeholder="Are there any areas you'd like specific feedback on?" name="feedback_request"> </textarea>
-			<input type="submit" value="Get some Feedback!!">
+			<%= collection_select(:drafts, :group_id, @current_user.groups, :id, :name, prompt: "Select Group") %> <br><br>
+			Feedback request:
+			<textarea class="form-control" rows="3" placeholder="Are there any areas you'd like specific feedback on? Or information your group should know about this piece?" name="feedback_request"></textarea><br>
+			<input type="submit" value="Submit to Group">
 		<%end%> 
 	</div>
 
@@ -28,7 +29,7 @@
 		</div>
 
 		<div class="card card-body card-padding">
-			<h2>Comments</h2>
+			<h2 class="c-black">Comments on this Draft</h2>
 
 			<%= render "comments/comments" %>
 		</div>
@@ -36,7 +37,7 @@
 
 		
 		<% if (@current_user.id == @draft.work.user_id) && (@draft.visible) %>
-			<%= button_to "Remove from Group", "/drafts/#{@draft.id}", method: :delete%>
+			<%= button_to "Remove from Group", "/drafts/#{@draft.id}", method: :patch%>
 		<% end %>
 		<br> 
 		<% if @current_user.id == @draft.work.user_id %>

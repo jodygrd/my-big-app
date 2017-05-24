@@ -11,8 +11,6 @@ class DraftsController < ApplicationController
 			work_id: params[:drafts][:work_id]
 			)
 		draft.word_doc = params[:file]
-		p draft.word_doc.url
-		p draft.word_doc.current_path
 
 		doc = Docx::Document.open(draft.word_doc.current_path)
 		text_file = []
@@ -25,7 +23,7 @@ class DraftsController < ApplicationController
 
 		if draft.save
 			flash[:success] = "Draft Created! Now go share it!"
-			redirect_to "/works/#{draft.work_id}"
+			redirect_to "/drafts/#{draft.id}"
 		else
 			flash[:danger] = "Draft not saved."
 			redirect_to "/drafts/new"

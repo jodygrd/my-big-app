@@ -4,12 +4,15 @@
 
 <% @groups.each do |group|%>
 	<div class="card card-body card-padding">
-		<div class="pull-left m-r-10">
-			<h3> <a href="/groups/<%= group.id %>"> <%= group.name %> </a> </h3>
+	<div id="c-grid" class="clearfix" data-columns>
+		<div class="text-left">
+			<h3 class="m-t-0"> <a href="/groups/<%= group.id %>"> <%= group.name %> </a> </h3>
+			<h4> Level: <%= group.level %> <h4>
+			<h4> <%= group.users.count %> Members <h4>
 		</div>
 		<div class="text-right">
 			<h4> <%= group.description %> </h4>
 		</div>
-
+	</div>
 	</div>
 <%end %>

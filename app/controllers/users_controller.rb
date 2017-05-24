@@ -22,7 +22,25 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
+  end
+
+  def profile
     @user = current_user
+    render 'show.html.erb'
+  end
+
+  def update
+    @user = current_user
+    @user.about = params[:about]
+    @user.photo = params[:photo]
+    @user.blog_url = params[:blog_url]
+    @user.website = params[:website]
+    if @user.save
+      flash[:success] = "profile updated"
+      redirect_to "/profile"
+    end
+
   end
 
 

@@ -1,13 +1,17 @@
-<h1> Create a Writer's Group! </h1>
+<div class="card card-body card-padding">
+	<h1> Create a Writing Group! </h1>
+	<h4> A writing group will allow you to find other writers with similar interests and offer feeback on one anothers' works-in-progress. </h4>
+</div>
 
-<div>
+<div class="card card-body card-padding">
 	<%= form_tag "/groups", method: :post do %>
-		Name Your Group: <input type="text" name="name"> <br> 
+		Name Your Group: <input class="form-control" name="name" placeholder="Make it descriptive!"> <br> 
+		What level of writing experience should your writers have?: <input class="form-control" name="level" placeholder="e.g. all levels, beginners, some published works"> <br> 
 		<div>
-		Describe your Group: <textarea name="description"> </textarea>
+		What kind of members are you looking for?: <textarea class="form-control" rows="5" name="description" placeholder="Describe what you're hoping to get out of this group in detail."></textarea>
 		</div>
 		Select a Primary Category: <%= collection_select(:groups, :category_id, Category.all, :id, :name, prompt: "Categories") %> <br>
-		<input class="btn btn-primary" type="submit" value="Create Group!">
+		<input type="submit" value="Create Group!">
 	<% end %>
 </div>
 

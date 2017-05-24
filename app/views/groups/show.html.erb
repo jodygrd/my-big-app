@@ -1,16 +1,18 @@
 
 <div class="card card-body card-padding">
 
-<h1><%= @group.name %> </h1>
-
+	<h1><%= @group.name %> </h1>
+	<h4><b>About this group:</b> <%= @group.description %> </h4>
+	<h4>Group Admin: <a href="/users/<%=@group.admin.id%>"><%= @group.admin.name %></a> </h4>
+</div>
+<div class="card card-body card-padding">
 	<%if @group.users.include?(current_user)%>
 		<a class="btn btn-primary" href="/groups/<%=@group.id%>/workshop"> Enter Workshop </a>
 	<%else%>
-		Welcome to this dope-ass group. Would you like to join?
-
+		<h4> Would you like to join this writing group?</h4>
 		<%= form_tag "/group_members", method: :post do %>
 			<input type="hidden" name="group_id" value="<%=@group.id%>">
-			<input type="submit" value="heck yeah pal">
+			<input type="submit" value="Join Group!">
 		<%end%>
 	<%end%>
 

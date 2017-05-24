@@ -7,6 +7,12 @@
 	<div class="card card-body card-padding text-center">
 	<a href="/groups/<%=group.id%>"><h3> <%= group.name %> </h3></a>
 	</div>
+	<% if group.admin_id == current_user.id %>
+	*admin
+	<%end%>
 <%end%>
 </div>
 
+<div class="card card-body palette-Purple-400 bg">
+	<a href="/groups/new" class="p-10"> <h3 class="text-center palette-White text"> Create a New Writing Group! </h3> </a>
+</div>

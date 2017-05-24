@@ -71,7 +71,7 @@
             
             <%else%>
                 <div class="pull-right">
-                    <a href="/login" class='btn btn palette-Purple bg btn-lg'> Login or Signup! </a>
+                    <a href="/signup" class='btn btn palette-Purple bg btn-lg'> Login or Signup! </a>
                 </div>
             <%end%>
             
@@ -84,42 +84,26 @@
                         <i class="zmdi zmdi-long-arrow-left" data-ma-action="sidebar-close"></i>
                     </div>
 
-                    <ul class="smm-alerts">
-                        <li data-user-alert="sua-messages" data-ma-action="sidebar-open" data-ma-target="user-alerts">
-                            <i class="zmdi zmdi-email"></i>
-                        </li>
-                        <li data-user-alert="sua-notifications" data-ma-action="sidebar-open" data-ma-target="user-alerts">
-                            <i class="zmdi zmdi-notifications"></i>
-                        </li>
-                        <li data-user-alert="sua-tasks" data-ma-action="sidebar-open" data-ma-target="user-alerts">
-                            <i class="zmdi zmdi-view-list-alt"></i>
-                        </li>
-                    </ul>
 
                     <ul class="main-menu">
                         <li class="active"><a href="/categories"><i class="zmdi zmdi-globe"></i> Browse Groups</a></li>
-                        <li><a href="/groups"><i class="zmdi zmdi-accounts-outline"></i>My Groups</a></li>
-                        <li><a href="/works"><i class="zmdi zmdi-local-library"></i> My Works</a></li>
-                        <li><a href="#"><i class="zmdi zmdi-calendar"></i> Calendar</a></li>
-                        <li><a href="#"><i class="zmdi zmdi-layers"></i> Other Link</a></li>
-
-                        <li class="sub-menu">
-                            <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-menu"></i> 3 Level Menu</a>
-
+                        <li class="sub-menu"><a href="/groups" data-ma-action="submenu-toggle"><i class="zmdi zmdi-accounts-outline"></i>My Groups</a>
                             <ul>
-                                <li><a href="form-elements.html">Level 2 link</a></li>
-                                <li><a href="form-components.html">Another level 2 Link</a></li>
-                                <li class="sub-menu">
-                                    <a href="" data-ma-action="submenu-toggle">I have children too</a>
-
-                                    <ul>
-                                        <li><a href="">Level 3 link</a></li>
-                                        <li><a href="">Another Level 3 link</a></li>
-                                        <li><a href="">Third one</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="form-validations.html">One more 2</a></li>
+                                <li class="active"><a href="/groups">All Writing Groups</a></li>
+                                <%current_user.groups.each do |group|%>
+                                    <li><a href="/groups/<%=group.id%>"><%=group.name%></a></li>
+                                <%end%>
                             </ul>
+
+                        </li>
+                        <li class="sub-menu"><a href="/works" data-ma-action="submenu-toggle"><i class="zmdi zmdi-local-library"></i> My Works</a>
+                            <ul>
+                                <li class="active"><a href="/works">All Works</a></li>
+                                <%current_user.works.each do |work|%>
+                                    <li><a href="/works/<%=work.id%>"><%=work.name%></a></li>
+                                <%end%>
+                            </ul>
+
                         </li>
                     </ul>
                 </aside>
@@ -139,7 +123,7 @@
             </section>
 
             <footer id="footer">
-                writ app by Jody Lipkin - 2017 <br>
+                writ app by J Lipkin - 2017 <br>
                 Design Copyright &copy; 2015 Material Admin
             </footer>
 
