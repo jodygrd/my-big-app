@@ -39,8 +39,14 @@ gem 'seed_dump'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-#uploading documents
-gem 'google_drive'
+#uploading document
+# file upload solution
+gem 'carrierwave'
+gem 'docx'
+gem 'fog'
+gem 'yomu'
+
+
 
 
 group :development, :test do
@@ -61,4 +67,3 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
-gem 'rack-cors'

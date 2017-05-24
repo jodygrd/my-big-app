@@ -2,16 +2,24 @@
 
 <div class="card card-body card-padding">
 	<div>
-		<%= form_tag "/drafts", method: :post do %>
-			Name This Draft: <input type="text" name="name"> <br> 
-			<div>
-			Paste Text Here: <textarea name="text"> </textarea>
-			</div>
-			</div>
-			<label for="file">Or Upload a Docx</label> <%= file_field_tag "file" %>
-			For Which Project: <%= collection_select(:drafts, :work_id, Work.all, :id, :name, prompt: "Select Work") %> <br>
+		<%= form_tag "/drafts", multipart: true, method: :post do %>
+			Name This Draft: <input class="form-control" name="name" placeholder="Draft Title"> <br> 
+			Paste your chapter or draft here:
+			<textarea class="form-control" rows="10" name="text" placeholder="Once upon a time..."></textarea>
+			<br>
+			 <div class="field">
+     		<%= label_tag :file %>
+     		<%= file_field_tag :file %>
+  		</div>
+
+
+			For Which Project: <%= collection_select(:drafts, :work_id, @current_user.works, :id, :name, prompt: "Select Work") %> 
+			<br>
+			<br>
+
 			<input type="submit" value="create draft">
 		<% end %>
 	</div>
+
 </div>
 

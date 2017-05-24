@@ -5,13 +5,27 @@ class DraftsController < ApplicationController
 	end
 
 	def create
-		@draft = Draft.new(name: params[:name],
+
+		draft = Draft.new(name: params[:name],
 			text: params[:text],
 			work_id: params[:drafts][:work_id]
 			)
-		if @draft.save
+		draft.word_doc = params[:file]
+		p draft.word_doc.url
+		p draft.word_doc.current_path
+
+		doc = Docx::Document.open(draft.word_doc.current_path)
+		text_file = []
+		doc.paragraphs.each do |p|
+  		text_file << p.to_html
+		end
+
+		draft.text = text_file.join('')
+
+
+		if draft.save
 			flash[:success] = "Draft Created! Now go share it!"
-			redirect_to "/works/#{@draft.work_id}"
+			redirect_to "/works/#{draft.work_id}"
 		else
 			flash[:danger] = "Draft not saved."
 			redirect_to "/drafts/new"
@@ -21,6 +35,7 @@ class DraftsController < ApplicationController
 	def show
 		@draft = Draft.find(params[:id])
 		@current_user = current_user
+
 
   	@commentable = @draft
   	@comments = @commentable.comments

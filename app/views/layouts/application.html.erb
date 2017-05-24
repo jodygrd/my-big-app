@@ -42,7 +42,6 @@
                 <ul class="pull-right h-menu">
                     <li class="hm-search-trigger">
                         <a href="" data-ma-action="search-open">
-                            <i class="hm-icon zmdi zmdi-search"></i>
                         </a>
                     </li>
                     
@@ -64,7 +63,7 @@
                 <div class="media-body h-search">
                 <%= form_tag "/search", method: :post do %>
                     <form class="p-relative">
-                        <i class="zmdi zmdi-search hs-reset" data-ma-action="search-clear"></i>
+                        <i class="hs-reset" data-ma-action="search-clear"></i>
                         <input type="text" class="hs-input" placeholder="Search Writing Groups." name="search_term">
                     </form>
                 <%end%>
