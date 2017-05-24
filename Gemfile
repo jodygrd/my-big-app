@@ -44,7 +44,8 @@ gem 'seed_dump'
 gem 'carrierwave'
 gem 'docx'
 gem 'fog'
-gem 'yomu'
+gem 'paperclip'
+
 
 
 
