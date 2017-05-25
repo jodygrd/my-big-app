@@ -11,14 +11,16 @@ class DraftsController < ApplicationController
 			work_id: params[:drafts][:work_id]
 			)
 		draft.word_doc = params[:file]
+		
+		if draft.word_doc 
+			doc = Docx::Document.open(draft.word_doc.current_path)
+			text_file = []
+			doc.paragraphs.each do |p|
+	  		text_file << p.to_html
+			end
 
-		doc = Docx::Document.open(draft.word_doc.current_path)
-		text_file = []
-		doc.paragraphs.each do |p|
-  		text_file << p.to_html
+			draft.text = text_file.join('')
 		end
-
-		draft.text = text_file.join('')
 
 
 		if draft.save
