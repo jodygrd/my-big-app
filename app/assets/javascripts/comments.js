@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     	console.log(this.draftId);
     	this.loaded=true
     	console.log("loaded")
-			var api_url = "http://localhost:3000/api/v1/drafts/"+this.draftId+"/comments.json";
+			var api_url = "/api/v1/drafts/"+this.draftId+"/comments.json";
     	$.get(api_url, function(result) {
     		this.comment_array = result;
     		console.log(result);
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     			commentable_id: this.draftId,
     			content: this.newComment
     		};
-    		var api_url = "http://localhost:3000/api/v1/comments";
+    		var api_url = "/api/v1/comments";
     		$.post(api_url, params, function(result){
     			this.comment_array.push(result)
     		}.bind(this));
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     			commentable_id: parent.id,
     			content: this.newReply
     		};
-    		var api_url = "http://localhost:3000/api/v1/comments";
+    		var api_url = "/api/v1/comments";
     		$.post(api_url, params, function(result){
     			console.log(result);
     			this.comment_array[index].children.push(result);
