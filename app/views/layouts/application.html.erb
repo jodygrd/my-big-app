@@ -100,11 +100,21 @@
                             <ul>
                                 <li class="active"><a href="/works">All Works</a></li>
                                 <%current_user.works.each do |work|%>
-                                    <li><a href="/works/<%=work.id%>"><%=work.name%></a></li>
+                                    <li class="sub-menu">
+                                        <a href="" data-ma-action="submenu-toggle"><%=work.name%></a>
+                                        <ul>
+                                            <li class="active"><a href="/works/<%=work.id%>">Full Work</a></li>
+                                            <%work.drafts.each do |draft|%>
+                                                <li><a href="/drafts/<%=draft.id%>"><%=draft.name%></a></li>
+                                            <%end%>
+                                        </ul>
+                                    </li>
                                 <%end%>
                             </ul>
 
                         </li>
+                        <li><a href="/works/new" class="palette-Purple text"><i class="zmdi zmdi-collection-text"></i> Create New Work</a></li>
+                        <li><a href="/drafts/new" class="palette-Purple text"><i class="zmdi zmdi-file-text"></i> Add a Draft </a></li>
                     </ul>
                 </aside>
             <%end%>
