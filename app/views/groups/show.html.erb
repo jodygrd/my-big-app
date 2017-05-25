@@ -11,6 +11,9 @@
 	<%else%>
 	<div class="card card-body card-padding">
 		<h4> Would you like to join this writing group?</h4>
+		Right now, all groups are open. In the future, admins will approve all incoming group members.
+		<br>
+		<br>
 		<%= form_tag "/group_members", method: :post do %>
 			<input type="hidden" name="group_id" value="<%=@group.id%>">
 			<input type="submit" value="Join Group!">

@@ -24,7 +24,11 @@ class GroupsController < ApplicationController
 			)
 		if @group.save
 			flash[:success] = "Group Created!"
+			GroupMember.create({
+			user_id: current_user.id, 
+			group_id: @group.id			})
 			redirect_to "/groups/#{@group.id}"
+		
 		else
 			flash[:danger] = "group not saved. Try again?"
 			redirect_to "/groups/new"
