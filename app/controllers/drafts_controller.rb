@@ -10,27 +10,33 @@ class DraftsController < ApplicationController
 			text: params[:text],
 			work_id: params[:drafts][:work_id]
 			)
-		if params[:file] 
 			draft.word_doc = params[:file]
-		end
-		
-		if draft.word_doc 
+
+		if draft.text
+			if draft.save
+				flash[:success] = "Draft Created! Now go share it!"
+				redirect_to "/drafts/#{draft.id}"
+			else
+				flash[:danger] = "Draft not saved."
+				redirect_to "/drafts/new"
+			end
+		else
 			doc = Docx::Document.open(draft.word_doc.current_path)
 			text_file = []
 			doc.paragraphs.each do |p|
 	  		text_file << p.to_html
 			end
 			draft.text = text_file.join('')
+				if draft.save
+					flash[:success] = "Draft Created! Now go share it!"
+					redirect_to "/drafts/#{draft.id}"
+				else
+					flash[:danger] = "Draft not saved."
+					redirect_to "/drafts/new"
+			end
 		end
 
-
-		if draft.save
-			flash[:success] = "Draft Created! Now go share it!"
-			redirect_to "/drafts/#{draft.id}"
-		else
-			flash[:danger] = "Draft not saved."
-			redirect_to "/drafts/new"
-		end
+	
 	end
 
 	def show
