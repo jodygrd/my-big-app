@@ -1,11 +1,22 @@
+
 <div class="card card-body card-padding">
-	<h1> <%= @draft.name %> </h1>
-	Part of: <%=@draft.work.name%> <br>
-	By: <%=@draft.work.user.name%> 
-	<% if @draft.visible %> 
-	<br>
-	Up for Feedback in: <a href="/groups/<%=@draft.group.id%>">  <%= @draft.group.name %> </a>
-	<%end%>
+	<div id="c-grid" class="clearfix" data-columns>
+		<div>
+			<h1> <%= @draft.name %> </h1>
+			Part of: <%=@draft.work.name%> <br>
+			By: <%=@draft.work.user.name%> 
+			<% if @draft.visible %> 
+				<br>
+				Up for Feedback in: <a href="/groups/<%=@draft.group.id%>">  <%= @draft.group.name %> </a>
+			<%end%>
+		</div>
+		<% if @draft.visible %> 
+			<div class="text-right">
+				<br>
+				<h4>Feedback Request:</h4> <%= @draft.feedback_request %>
+			</div>
+		<%end%>
+	</div>
 </div>
 
 <% if (@current_user.id == @draft.work.user_id) && !(@draft.visible) %>

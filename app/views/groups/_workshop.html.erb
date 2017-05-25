@@ -19,19 +19,20 @@
           <div class="card pt-item">
      				<a href="/drafts/<%=draft.id%>">
               <div class="pti-header bgm-purple">
-                  <h2><%=draft.name%> </h2>
+                  <h2><%=draft.work.name%> </h2>
                   <br>
-                  <h4 class="c-white"><%=draft.work.name%></h4>
+                  <h4 class="c-white"><%=draft.name%></h4>
                   <div class="ptih-title">By <%=draft.work.user.name%></div>
               </div>
             </a>
               <div class="pti-body">
                   <div class="ptib-item">
-                  Author's Request: 
+                  <b>Author's Request:</b>
+                    <%=draft.feedback_request%>
                       
                   </div>
                   <div class="ptib-item">
-                     Preview: <%= truncate("#{draft.text}", length: 150) %>
+                     <b> Work Description:</b> <%= draft.work.description %>
                   </div>
               </div>
 
