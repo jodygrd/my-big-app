@@ -10,7 +10,9 @@ class DraftsController < ApplicationController
 			text: params[:text],
 			work_id: params[:drafts][:work_id]
 			)
-		draft.word_doc = params[:file]
+		if params[:file] 
+			draft.word_doc = params[:file]
+		end
 		
 		if draft.word_doc 
 			doc = Docx::Document.open(draft.word_doc.current_path)
@@ -18,7 +20,6 @@ class DraftsController < ApplicationController
 			doc.paragraphs.each do |p|
 	  		text_file << p.to_html
 			end
-
 			draft.text = text_file.join('')
 		end
 
