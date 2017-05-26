@@ -12,7 +12,14 @@ class DraftsController < ApplicationController
 			)
 			draft.word_doc = params[:file]
 
-		if draft.text
+
+			doc = Docx::Document.open(draft.word_doc.current_path)
+			text_file = []
+			doc.paragraphs.each do |p|
+	  		text_file << p.to_html
+			end
+			draft.text = text_file.join('')
+			
 			if draft.save
 				flash[:success] = "Draft Created! Now go share it!"
 				redirect_to "/drafts/#{draft.id}"
@@ -20,22 +27,6 @@ class DraftsController < ApplicationController
 				flash[:danger] = "Draft not saved."
 				redirect_to "/drafts/new"
 			end
-		else
-			doc = Docx::Document.open(draft.word_doc.current_path)
-			text_file = []
-			doc.paragraphs.each do |p|
-	  		text_file << p.to_html
-			end
-			draft.text = text_file.join('')
-				if draft.save
-					flash[:success] = "Draft Created! Now go share it!"
-					redirect_to "/drafts/#{draft.id}"
-				else
-					flash[:danger] = "Draft not saved."
-					redirect_to "/drafts/new"
-			end
-		end
-
 	
 	end
 
